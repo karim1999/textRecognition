@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <canvas id="the-canvas" style="display: none"></canvas>
-    <input id="fileInput" type="file" @change="onFileChange">
+    <input id="fileInput" type="file" @change="onFileChange" accept="image/*,.pdf">
     <h1>{{license}}</h1>
   </div>
 </template>
@@ -32,13 +32,14 @@
 
                 reader.onload = (e) => {
                     vm.image = e.target.result;
-                    console.log(fileInput.type)
                     if (fileInput.type.match('image.*')) {
                         console.log("is an image");
                         this.checkLicense()
                     }else if(fileInput.type.match('.*pdf')){
                         console.log("is a pdf");
                         this.pdfToImg()
+                    }else{
+                        this.license= "Wrong file type"
                     }
                 };
                 reader.readAsDataURL(file);
