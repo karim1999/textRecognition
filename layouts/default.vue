@@ -1,6 +1,7 @@
 <template>
   <div>
     <Nuxt />
+    <script src="//mozilla.github.io/pdf.js/build/pdf.js"></script>
   </div>
 </template>
 
