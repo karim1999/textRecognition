@@ -65,6 +65,7 @@
                                 return;
                             key= parseInt(key)
                             //check patterns
+
                             // console.log("Key " + key + " ,Description " + textAnnotations[key].description)
                             if(textAnnotations[key].description == "رقم") {
                                 console.log(key)
