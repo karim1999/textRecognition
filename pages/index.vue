@@ -48,7 +48,7 @@
                 this.image = '';
             },
             pdfToImg(){
-                var pdfjsLib = window['pdfjs-dist/build/pdf'];
+                // let pdfjsLib = window['pdfjs-dist/build/pdf'];
                 pdfjsLib.GlobalWorkerOptions.workerSrc = '//mozilla.github.io/pdf.js/build/pdf.worker.js';
 
                 let loadingTask = pdfjsLib.getDocument({data: atob(this.image.split(',')[1])});
@@ -98,7 +98,10 @@
                                 {
                                     "type": "TEXT_DETECTION"
                                 }
-                            ]
+                            ],
+                            "imageContext": {
+                                "languageHints": ["en"]
+                            }
                         }
                     ]
                 }, {
@@ -134,8 +137,8 @@
                             }
                         }
                         if(textAnnotations[key].description.toLowerCase() == "license" || textAnnotations[key].description.toLowerCase() == "licence"){
+                            console.log(key)
                             if(textAnnotations.length > key + 1 && (textAnnotations[key + 1].description.toLowerCase().startsWith("no"))){
-                                // console.log("2")
                                 if(textAnnotations.length > key + 2 && textAnnotations[key + 2].description.match(/\d/)){
                                     console.log("found it "+ textAnnotations[key + 2].description)
                                     licenseNo= textAnnotations[key + 2].description

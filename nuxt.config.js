@@ -23,6 +23,9 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+    ],
+    script: [
+      {src: '//mozilla.github.io/pdf.js/build/pdf.js'}
     ]
   },
   loading: {
